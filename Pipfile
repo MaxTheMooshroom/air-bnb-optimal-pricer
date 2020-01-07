@@ -1,0 +1,10 @@
+[dev-packages]
+
+[packages]
+flask = "*"
+gunicorn = "*"
+plotly = "*"
+pandas = "*"
+
+[requires]
+python_version = "3"
