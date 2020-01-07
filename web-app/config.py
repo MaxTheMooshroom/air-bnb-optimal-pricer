@@ -2,9 +2,4 @@
 """
 
 title = "AirBNB Optimal Price Finder"
-
-model_dir = 'pickle.plk'
-
-model_params = []
-
-debug = True
+secret_key = 'our-secret-key'
