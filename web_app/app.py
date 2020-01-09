@@ -1,11 +1,16 @@
 """ Code for our app """
 
-import numpy as np
-import pandas as pd
-from flask import Flask, request, jsonify
-from flask_cors import CORS
+# Standard imports
 import pickle
 
+# 3rd party imports
+import numpy as np
+import pandas as pd
+import xgboost
+from flask import Flask, request, jsonify
+from flask_cors import CORS
+
+# Local imports
 from .data_wrangling import wrangle
 
 def create_app():
