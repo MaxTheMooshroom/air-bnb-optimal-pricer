@@ -32,7 +32,7 @@ def create_app():
     @app.route('/', methods=['GET'])
     def predict():
 
-        print(request.data)
+        print('request data:', request.data)
 
         if request.data is None:
             return redirect('http://www.google.com')
