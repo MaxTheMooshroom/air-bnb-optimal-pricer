@@ -34,7 +34,7 @@ def create_app():
 
         print('request data:', request.data)
 
-        if request.data is None:
+        if request.data == b'':
             return redirect('http://www.google.com')
 
         # get JSON object from the GET request
