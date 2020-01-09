@@ -7,7 +7,7 @@ import pickle
 import numpy as np
 import pandas as pd
 import xgboost
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, redirect
 from flask_cors import CORS
 
 # Local imports
@@ -31,6 +31,11 @@ def create_app():
 
     @app.route('/', methods=['GET'])
     def predict():
+
+        print(request.data)
+
+        if request.data is None:
+            return redirect('http://www.google.com')
 
         # get JSON object from the GET request
         data = request.get_json(force=True)
