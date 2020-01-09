@@ -8,11 +8,16 @@ verify_ssl = true
 [packages]
 flask = "*"
 flask-cors = "*"
-requests = "*"
-scikit-learn = "*"
-scipy = "*"
-gunicorn = "*"
 pandas = "*"
+numpy = "*"
+seaborn = "*"
+matplotlib = "*"
+scipy = "*"
+scikit-learn = "*"
+category-encoders = "*"
+tensorflow = "*"
+requests = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.7"

@@ -1,3 +1,5 @@
-import engine
+"""Entry point for AirBnb app"""
 
-APP = engine.app
+from .app import create_app
+
+APP = create_app()
