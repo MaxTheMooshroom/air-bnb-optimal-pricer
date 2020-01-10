@@ -32,6 +32,8 @@ def create_app():
     @app.route('/', methods=['GET'])
     def index():
 
+        print('\n\n\n\nDEBUG TESTING\n\n\n\n')
+
         if request.data == b'':
             return render_template('example_form.html', optimal_price="")
 
