@@ -31,9 +31,6 @@ def create_app():
 
         print('\n\n\n\nDEBUG TESTING\n\n\n\n')
 
-        if request.data == b'':
-            return render_template('example_form.html', optimal_price="")
-
         # defining a dictionary to store data in
         data = {}
 
