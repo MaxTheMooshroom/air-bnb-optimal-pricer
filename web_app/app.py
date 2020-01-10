@@ -22,13 +22,6 @@ def create_app():
     # prevent web errors
     CORS(app)
 
-    # List of features to use in request
-    PARAMATERS = [
-        'neighbourhood_group_cleansed', 'room_type', 'accommodates',
-        'bathrooms', 'bedrooms', 'beds', 'bed_type', 'security_deposit',
-        'cleaning_fee', 'minimum_nights', 'amenities'
-        ]
-
     @app.route('/')
     def index():
         return render_template('example_form.html', optimal_price="")
@@ -43,6 +36,13 @@ def create_app():
 
         # defining a dictionary to store data in
         data = {}
+
+        # List of features to use in request
+        PARAMATERS = [
+            'neighbourhood_group_cleansed', 'room_type', 'accommodates',
+            'bathrooms', 'bedrooms', 'beds', 'bed_type', 'security_deposit',
+            'cleaning_fee', 'minimum_nights', 'amenities'
+            ]
 
         # load the data
         for param in PARAMETERS:
