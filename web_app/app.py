@@ -41,7 +41,15 @@ def create_app():
         PARAMATERS = [
             'neighbourhood_group_cleansed', 'room_type', 'accommodates',
             'bathrooms', 'bedrooms', 'beds', 'bed_type', 'security_deposit',
-            'cleaning_fee', 'minimum_nights', 'amenities'
+            'cleaning_fee', 'minimum_nights'
+            ]
+
+        AMENITIES = [
+           'Washer', 'Hair dryer', 'Laptop friendly workspace', 'Hangers',
+           'Iron', 'Shampoo', 'TV', 'Hot water', 'Family/kid friendly', 'Internet',
+           'Host greets you', 'Smoke detector', 'Buzzer/wireless intercom',
+           'Lock on bedroom door', 'Free street parking', 'Elevator', 'Bed linens',
+           'Smoking allowed', 'First aid kit', 'Cable TV' 
             ]
 
         # load the data
@@ -49,6 +57,12 @@ def create_app():
             print(f'{param} type:', type(request.args[param]))
             print(f'{param}:', request.args[param])
             data[param] = [request.args[param]]
+
+        for amenity in AMENITIES:
+            if request.args[amenity]:
+                data[amenity] = 1
+            else:
+                data[amenity] = 0
 
         # convert data into dataframe to be passed through the model
         data_df = pd.DataFrame.from_dict(data)
@@ -64,6 +78,8 @@ def create_app():
 
         # create a string response to display
         response = f'The optimal nightly price is {result}'
+
+        print('\n\n' + response + '\n\n')
 
         # convert the dict to a JSON object and return it
         return render_template('example_form.html', optimal_price=response)
