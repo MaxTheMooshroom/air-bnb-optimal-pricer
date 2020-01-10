@@ -1,0 +1,89 @@
+<html>
+    <head>
+        <meta author="Marilyn Esko, Maxie Lawrence"/>
+
+
+    </head>
+    <body>
+        <h3>What is the optimal nightly price?</h3>
+        <form action="/" method="get">
+
+            <p>Neighbourhood</p>
+
+            <select name="neighbourhood_group_cleansed">
+                <option value="Friedrichshain-Kreuzberg">Friedrichshain-Kreuzberg</option>
+                <option value="Mitte">Mitte</option>
+                <option value="Pankow">Pankow</option>
+                <option value="Neukölln">Neukölln</option>
+                <option value="Charlottenburg-Wilm.">Charlottenburg-Wilm.</option>
+                <option value="Tempelhof - Schöneberg">Tempelhof - Schöneberg</option>
+                <option value="Lichtenberg">Lichtenberg</option>
+                <option value="Treptow - Köpenick">Treptow - Köpenick</option>
+                <option value="Steglitz - Zehlendorf">Steglitz - Zehlendorf</option>
+                <option value="Reinickendorf">Reinickendorf</option>
+                <option value="Spandau">Spandau</option>
+                <option value="Marzahn - Hellersdorf">Marzahn - Hellersdorf</option>
+            </select>
+
+
+            <p>Number of People</p>
+
+            <input type="number" name="accommodates" min="1" value="1" />
+
+
+            <p>Number of Nights</p>
+
+            <input type="number" name="minimum_nights" min="1" value="1" />
+
+
+            <p>Room Type</p>
+
+            <select name="room_type">
+                <option value="Entire home/apt">Entire home/apt</option>
+                <option value="Private room">Private room</option>
+                <option value="Shared room">Shared room</option>
+            </select>
+
+
+            <p>Number of Bathrooms</p>
+
+            <input type="number" name="bathrooms" min="1" value="1" />
+
+
+            <p>Number of Bedrooms</p>
+
+            <input type="number" name="bedrooms" min="1" value="1" />
+
+
+            <p>Number of Beds</p>
+
+            <input type="number" name="beds" min="1" value="1" />
+
+
+            <p>Bed Type</p>
+
+            <select name="bed_type">
+                <option value="Real Bed">Real Bed</option>
+                <option value="Pull-out Sofa">Pull-out Sofa</option>
+                <option value="Futon">Futon</option>
+                <option value="Couch">Couch</option>
+                <option value="Airbed">Airbed</option>
+            </select>
+
+            <p>Security Deposit</p>
+
+            <input type="number" name="security_deposit" min="0" value="0" />
+
+
+            <p>Cleaning Fee</p>
+
+            <input type="number" name="cleaning_fee" min="0" value="0" />
+
+
+            <p>Amenities:</p>
+            <!-- insert amenities tick boxes here -->
+            <input type="submit" value="Predict" />
+        </form>
+        <p>{{ optimal_price }}</p>
+    </body>
+</html>

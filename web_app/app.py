@@ -7,7 +7,7 @@ import pickle
 import numpy as np
 import pandas as pd
 import xgboost
-from flask import Flask, request, jsonify, redirect
+from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 
 # Local imports
@@ -30,10 +30,40 @@ def create_app():
         ]
 
     @app.route('/', methods=['GET'])
-    def predict():
+    def index():
 
         if request.data == b'':
-            return redirect('http://www.google.com')
+            return render_template('example_form.html', optimal_price="")
+
+        # defining a dictionary to store data in
+        data = {}
+
+        # load the data
+        for param in PARAMETERS:
+            print(f'{param} type:', type(request.args[param]))
+            print(f'{param}:', request.args[param])
+            data[param] = [request.args[param]]
+
+        # convert data into dataframe to be passed through the model
+        data_df = pd.DataFrame.from_dict(data)
+
+        # WRANGLING TIME!!!
+        data_df = wrangle(data_df)
+
+        # making a prediction by passing a dataframe through the model
+        result = int(model.predict(data_df)[0])
+
+        # storing the result as a dict
+        #output = {'results': int(result[0])}
+
+        # create a string response to display
+        response = f'The optimal nightly price is {result}'
+
+        # convert the dict to a JSON object and return it
+        return render_template('example_form.html', optimal_price=response)
+
+    @app.route('/json', methods=['GET'])
+    def predict():
 
         # get JSON object from the GET request
         data = request.get_json(force=True)
@@ -43,6 +73,9 @@ def create_app():
 
         # convert data into dataframe to be passed through the model
         data_df = pd.DataFrame.from_dict(data)
+
+        # WRANGLING TIME!!!
+        data_df = wrangle(data_df)
 
         # making a prediction by passing a dataframe through the model
         result = model.predict(data_df)
