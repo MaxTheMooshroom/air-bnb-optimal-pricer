@@ -59,6 +59,7 @@ def create_app():
 
         for amenity in AMENITIES:
             if amenity in request.args.keys():
+
                 print(f'{amenity} present! Value: {request.args[amenity]}')
                 data[amenity] = 1
             else:
