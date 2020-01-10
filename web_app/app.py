@@ -29,8 +29,12 @@ def create_app():
         'cleaning_fee', 'minimum_nights', 'amenities'
         ]
 
-    @app.route('/', methods=['GET'])
+    @app.route('/')
     def index():
+        return render_template('example_form.html', optimal_price="")
+
+    @app.route('/predict', methods=['GET'])
+    def predict():
 
         print('\n\n\n\nDEBUG TESTING\n\n\n\n')
 
@@ -65,7 +69,7 @@ def create_app():
         return render_template('example_form.html', optimal_price=response)
 
     @app.route('/json', methods=['GET'])
-    def predict():
+    def json():
 
         # get JSON object from the GET request
         data = request.get_json(force=True)
