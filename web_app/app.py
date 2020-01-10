@@ -35,7 +35,7 @@ def create_app():
         data = {}
 
         # List of features to use in request
-        PARAMATERS = [
+        PARAMETERS = [
             'neighbourhood_group_cleansed', 'room_type', 'accommodates',
             'bathrooms', 'bedrooms', 'beds', 'bed_type', 'security_deposit',
             'cleaning_fee', 'minimum_nights'
@@ -62,6 +62,9 @@ def create_app():
                 data[amenity] = 1
             else:
                 data[amenity] = 0
+
+        for arg in request.args.keys():
+            print(f'{arg}: {request.args[arg]}')
 
         print('\n\nConverting to dataframe\n\n')
 
