@@ -52,6 +52,8 @@ def create_app():
            'Smoking allowed', 'First aid kit', 'Cable TV' 
             ]
 
+        print('\n\nGetting the request data\n\n')
+
         # load the data
         for param in PARAMETERS:
             print(f'{param} type:', type(request.args[param]))
@@ -64,11 +66,15 @@ def create_app():
             else:
                 data[amenity] = 0
 
+        print('\n\nConverting to dataframe\n\n')
+
         # convert data into dataframe to be passed through the model
         data_df = pd.DataFrame.from_dict(data)
 
         # WRANGLING TIME!!!
         #data_df = wrangle(data_df)
+
+        print('\n\nmaking a prediction\n\n')
 
         # making a prediction by passing a dataframe through the model
         result = int(model.predict(data_df)[0])
