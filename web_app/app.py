@@ -57,13 +57,15 @@ def create_app():
             print(f'{param}:', request.args[param])
             data[param] = [request.args[param]]
 
+        print('\n\nAmenities:\n')
+
         for amenity in AMENITIES:
             if amenity in request.args.keys():
 
                 print(f'{amenity} present! Value: {request.args[amenity]}')
-                data[amenity] = 1
+                data[amenity.replace(' ', '_')] = 1
             else:
-                data[amenity] = 0
+                data[amenity.replace(' ', '_')] = 0
 
         for arg in request.args.keys():
             print(f'{arg}: {request.args[arg]}')
@@ -73,7 +75,8 @@ def create_app():
         # convert data into dataframe to be passed through the model
         data_df = pd.DataFrame.from_dict(data)
 
-        print('\n\n', data_df, '\n\n')
+        with pd.option_context('display.max_rows', None, 'display.max_columns', None):  # more options can be specified also
+            print('\n\n', data_df, '\n\n')
 
         # WRANGLING TIME!!!
         #data_df = wrangle(data_df)
