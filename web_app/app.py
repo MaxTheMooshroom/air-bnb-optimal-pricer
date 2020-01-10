@@ -68,7 +68,7 @@ def create_app():
         data_df = pd.DataFrame.from_dict(data)
 
         # WRANGLING TIME!!!
-        data_df = wrangle(data_df)
+        #data_df = wrangle(data_df)
 
         # making a prediction by passing a dataframe through the model
         result = int(model.predict(data_df)[0])
