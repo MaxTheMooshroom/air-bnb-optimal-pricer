@@ -17,7 +17,7 @@ def create_app():
     app = Flask(__name__)
 
     # load pickled model
-    model = pickle.load(open('rf_model.pkl','rb'))
+    model = pickle.load(open('model.pkl','rb'))
 
     # prevent web errors
     CORS(app)
