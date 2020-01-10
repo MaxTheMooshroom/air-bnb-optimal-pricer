@@ -73,6 +73,8 @@ def create_app():
         # convert data into dataframe to be passed through the model
         data_df = pd.DataFrame.from_dict(data)
 
+        print('\n\n', data_df, '\n\n')
+
         # WRANGLING TIME!!!
         #data_df = wrangle(data_df)
 
