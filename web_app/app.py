@@ -55,7 +55,7 @@ def create_app():
         for param in PARAMETERS:
             print(f'{param} type:', type(request.args[param]))
             print(f'{param}:', request.args[param])
-            data[param] = [request.args[param]]
+            data[param] = [int(request.args[param])]
 
         print('\n\nAmenities:\n')
 
